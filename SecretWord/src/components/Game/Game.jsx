@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useRef } from "react";
 import "./Game.css";
 
 const Game = ({
@@ -11,10 +12,24 @@ const Game = ({
   guesses,
   score}) => {
 
+    const [letter, setLetter] = useState("");
+    const letterInputRef = useRef(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        verifyLetter(letter);
+    
+        setLetter("");
+    
+        // foca novamente no elemento a cada vez q finaliza o summit.
+        letterInputRef.current.focus();
+      };
+    
   return (
     <div className="game">
       <p className="points">
-        <span>Pontuação: {score}</span>:
+        <span>Pontuação: </span>: {score}
       </p>
       <h1>Advinhe a palavra:</h1>
       <h3 className="tip">
@@ -34,8 +49,15 @@ const Game = ({
       </div>
       <div className="letterContainer">
         <p>Tente adivnhar uma letra da palavra:</p>
-        <form>
-          <input type="text" name="letter" maxLength="1" required />
+        <form onSubmit={handleSubmit}>  
+          <input type="text" 
+          name="letter"
+           maxLength="1" 
+           required
+           onChange={(e) => setLetter(e.target.value)}
+           value={letter}
+           ref={letterInputRef}
+            />
           <button>Jogar!</button>
         </form>
       </div>

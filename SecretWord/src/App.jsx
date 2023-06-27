@@ -64,9 +64,33 @@ function App() {
   }
 
   // processando a letra digitada
-  const verifyLetter = () =>{
-    setGameStage(stages[2].name)
-  }
+  const verifyLetter = (letter) =>{
+    // setGameStage(stages[2].name)
+    const normalizedLetter = letter.toLowerCase();
+
+    // check se a letra já foi utilizada
+    if (
+      guessedLetters.includes(normalizedLetter) ||
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+
+    //imprimir a letra adivinhada, se errada perde uma chance
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        letter,
+      ]);
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter,
+      ]);
+
+      setGuesses((actualGuesses) => actualGuesses - 1);
+    }
+  };
 
   // reiniciar o jogo
   const retry = () =>{
