@@ -8,8 +8,6 @@ import { wordsList } from "./data/words";
 import TelaInicial from './components/TelaInicial/TelaInicial'
 import Game from "./components/Game/Game";
 import GameOver from "./components/GameOver/GameOver";
-import DropButton from "./components/teste/dropbutton";
-import DropButton2 from "./components/teste/dropbutton";
 
 const stages = [
   { id: 1, name: "start" },
@@ -149,7 +147,6 @@ function App() {
           guesses={guesses}
           score={score}/>}
      {gameStage === "end" && <GameOver retry={retry} score={score}/>}
-     <DropButton/>
      
     </div>
   )
