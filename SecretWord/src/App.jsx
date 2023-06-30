@@ -8,12 +8,16 @@ import { wordsList } from "./data/words";
 import TelaInicial from './components/TelaInicial/TelaInicial'
 import Game from "./components/Game/Game";
 import GameOver from "./components/GameOver/GameOver";
+import DropButton from "./components/teste/dropbutton";
+import DropButton2 from "./components/teste/dropbutton";
 
 const stages = [
   { id: 1, name: "start" },
   { id: 2, name: "game" },
   { id: 3, name: "end" },
 ];
+
+const GuessesNumber =3;
 
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
@@ -25,7 +29,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(3);
+  const [guesses, setGuesses] = useState(GuessesNumber);
   const [score, setScore] = useState(0);
  
  const pickWordAndCategory = () => {
@@ -44,7 +48,9 @@ function App() {
     }
 
   //Iniciando o jogo.
-  const startGame = () =>{
+  const startGame = useCallback(() => {
+    // apagando todas as letras
+    clearLettersStates();
 
     // Escolhendo uma palavra
     const {word, category} = pickWordAndCategory();
@@ -53,15 +59,13 @@ function App() {
     let wordLetters = word.split("");
     wordLetters = wordLetters.map((l) => l.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
 
-    console.log(category, word);
-    console.log(wordLetters);
 
     setPickedCategory(category);
     setPickedWord(word);
     setLetters(wordLetters);
 
     setGameStage(stages[1].name)
-  }
+  }, [pickWordAndCategory]);
 
   // processando a letra digitada
   const verifyLetter = (letter) =>{
@@ -94,8 +98,43 @@ function App() {
 
   // reiniciar o jogo
   const retry = () =>{
-    setGameStage(stages[0].name)
+    setScore(0);
+    setGuesses(GuessesNumber);
+    setGameStage(stages[0].name);
   }
+
+   // apagar letras do state
+   const clearLettersStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+
+  // check se chances acabaram
+  useEffect(() => {
+    if (guesses === 0) {
+      // game over e reseta todos os states
+      clearLettersStates();
+
+      setGameStage(stages[2].name);
+    }
+  }, [guesses]);
+
+  // check win condition
+  useEffect(() => {
+    const uniqueLetters = [...new Set(letters)];
+
+    console.log(uniqueLetters);
+    console.log(guessedLetters);
+
+    // win condition
+    if (guessedLetters.length === uniqueLetters.length) {
+      // add score
+      setScore((actualScore) => (actualScore += 100));
+
+      // restart game com nova palavra
+      startGame();
+    }
+  }, [guessedLetters, letters, startGame]);
 
   return (
     <div className="App">
@@ -109,7 +148,9 @@ function App() {
           wrongLetters={wrongLetters}
           guesses={guesses}
           score={score}/>}
-     {gameStage === "end" && <GameOver retry={retry}/>}
+     {gameStage === "end" && <GameOver retry={retry} score={score}/>}
+     <DropButton/>
+     
     </div>
   )
 }
