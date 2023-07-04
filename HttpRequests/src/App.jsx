@@ -1,6 +1,7 @@
 import './App.css'
 
 import { useState,useEffect } from 'react'
+import {useFetch} from "./hooks/useFetch"
 
 // URL da API
 const url= "http://localhost:3000/products";
@@ -8,25 +9,28 @@ const url= "http://localhost:3000/products";
 function App() {
   const [products, setProducts] = useState([])
 
+  // busco os dados como o get
+  const {data: items} = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
-  useEffect( () =>{
-    async function fetchData() {
-    const res = await fetch(url)
+  // Comentei e substitui pelo hook useFetch
+  // useEffect( () =>{
+  //   async function fetchData() {
+  //   const res = await fetch(url)
 
-    // passa os dados recebidos na requisição(que chegam em json) para um objeto e poder ser manipulado
-    const data = await res.json();
+  //   // passa os dados recebidos na requisição(que chegam em json) para um objeto e poder ser manipulado
+  //   const data = await res.json();
 
-    // armazena no set
-    setProducts(data);
-    }
+  //   // armazena no set
+  //   setProducts(data);
+  //   }
     
-    fetchData();
+  //   fetchData();
 
-  },[]);
-console.log(name,price)
+  // },[]);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -43,7 +47,13 @@ const handleSubmit = async (e) => {
     },
     body: JSON.stringify(product),
   });
-  console.log(product)
+  
+  //  3 - carregamento dinâmico. 
+   const addedProduct = await res.json();
+    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+
+    setName("")
+    setPrice("");
 };
 
   return (
@@ -51,7 +61,7 @@ const handleSubmit = async (e) => {
      <div className="App">
       <h1>Lista de Produtos</h1>
       <ul>
-        {products.map((product) => (
+        {items && items.map((product) => (
           <li key={product.id}>
             {product.name} - R$: {product.price}</li>
         ))}

@@ -19,6 +19,11 @@
       "name": "Bermuda azul",
       "price": "29.9",
       "id": 4
+    },
+    {
+      "name": "Calça preta",
+      "price": "95",
+      "id": 5
     }
   ]
 }
