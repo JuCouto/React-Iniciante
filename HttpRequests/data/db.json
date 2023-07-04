@@ -24,6 +24,11 @@
       "name": "Calça preta",
       "price": "95",
       "id": 5
+    },
+    {
+      "name": "Camisa Polo",
+      "price": "39.9",
+      "id": 6
     }
   ]
 }

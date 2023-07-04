@@ -10,7 +10,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // busco os dados como o get
-  const {data: items} = useFetch(url);
+  const {data: items, httpConfig, loading} = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -40,17 +40,21 @@ const handleSubmit = async (e) => {
     price,
   };
 
-  const res = await fetch (url, {
-    method:"Post",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body: JSON.stringify(product),
-  });
+  // comentei e substitui pelo hook 5
+  // const res = await fetch (url, {
+  //   method:"Post",
+  //   headers:{
+  //     "Content-Type":"application/json"
+  //   },
+  //   body: JSON.stringify(product),
+  // });
   
-  //  3 - carregamento dinâmico. 
-   const addedProduct = await res.json();
-    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+  // //  3 - carregamento dinâmico. 
+  //  const addedProduct = await res.json();
+  //   setProducts((prevProducts) => [...prevProducts, addedProduct]);
+
+  // 5
+  httpConfig(product, "POST");
 
     setName("")
     setPrice("");
@@ -60,6 +64,8 @@ const handleSubmit = async (e) => {
     
      <div className="App">
       <h1>Lista de Produtos</h1>
+      {/* 6 loading */}
+      {loading && <p>Carregando os dados...</p>}
       <ul>
         {items && items.map((product) => (
           <li key={product.id}>
