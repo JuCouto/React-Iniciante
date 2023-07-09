@@ -94,7 +94,7 @@ const handleSubmit = async (e) => {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-         <input type="submit" value="Criar" />
+          {loading ? <p>Aguarde!</p> : <input type="submit" value="Criar" />}
         </form>
       </div>
       </div> 

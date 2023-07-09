@@ -29,6 +29,11 @@
       "name": "Camisa Polo",
       "price": "39.9",
       "id": 6
+    },
+    {
+      "name": "Sandalia",
+      "price": "110",
+      "id": 7
     }
   ]
 }
