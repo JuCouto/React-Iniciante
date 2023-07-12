@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
-    const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
-    // 5 - refatorando post
+  // 5 - refatorando post
   const [config, setConfig] = useState(null);
   const [method, setMethod] = useState(null);
   const [callFetch, setCallFetch] = useState(false);
@@ -12,19 +12,25 @@ export const useFetch = (url) => {
   // 6 - estado de loading
   const [loading, setLoading] = useState(false);
 
+  //8 - tratando erros.
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-        //6
-        setLoading(true);
+      //6
+      setLoading(true);
 
-
+      try {
         const res = await fetch(url);
 
         const json = await res.json();
 
         setData(json);
-        setLoading(false);
+      } catch (error) {
+        setError("Ocorreu um erro ao carregar os dados")
+      }
+
+      setLoading(false);
     };
     fetchData();
   }, [url, callFetch]);
@@ -39,8 +45,9 @@ export const useFetch = (url) => {
         },
         body: JSON.stringify(data),
       });
-      setMethod(method)
-    }}
+      setMethod(method);
+    }
+  };
 
   useEffect(() => {
     const httpRequest = async () => {
@@ -52,12 +59,11 @@ export const useFetch = (url) => {
         const json = await res.json();
 
         setCallFetch(json);
-    }
+      }
+    };
+
+    httpRequest();
+  }, [config]);
+
+  return { data, httpConfig, loading,error };
 };
-
-httpRequest();
-}, [config]);
-
-return{data, httpConfig, loading}
-};
-

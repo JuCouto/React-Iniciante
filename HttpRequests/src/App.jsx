@@ -10,7 +10,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // busco os dados como o get
-  const {data: items, httpConfig, loading} = useFetch(url);
+  const {data: items, httpConfig, loading, error} = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -66,6 +66,7 @@ const handleSubmit = async (e) => {
       <h1>Lista de Produtos</h1>
       {/* 6 loading */}
       {loading && <p>Carregando os dados...</p>}
+      {error && <p>{error}</p>}
       <ul>
         {items && items.map((product) => (
           <li key={product.id}>
