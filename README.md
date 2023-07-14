@@ -1,5 +1,9 @@
 # React-Iniciante
 
+#### A descrição dos projetos segue a ordem de execução em aula.
+Sendo os primeiros com aplicação mais simples em relação a arquitetura, organização do código, uso de componentes e hooks.
+
+
 <details>
   <summary>SecretWord</summary>
 - Projeto de um jogo similar ao jogo da forca.
