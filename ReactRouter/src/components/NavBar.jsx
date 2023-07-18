@@ -5,21 +5,22 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/about">Sobre</Link> 
-      {/* 8 - active link
-      {/* <NavLink
+      {/* <Link to="/">Home</Link>
+      <Link to="/about">Sobre</Link>  */}
+      
+      <NavLink
         className={({ isActive }) => (isActive ? "active" : undefined)}
         to="/"
       >
         Home
       </NavLink>
+      
       <NavLink
         className={({ isActive }) => (isActive ? "active" : undefined)}
         to="/about"
       >
         Sobre
-      </NavLink> */}
+      </NavLink>
     </nav>
   );
 };
