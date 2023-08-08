@@ -30,6 +30,7 @@ o react vai abrir em outra porta se a 3000 estiver ocupada, ou usando o vite vai
   - <b>npm run server</b>
 
   - O código possui comentários para facilitar o acompanhamento no que foi acrescentado nas aulas.
+![Http](https://github.com/JuCouto/React-Iniciante/assets/100319483/079a99c9-aabb-4709-a2d3-c6ff2df297ef)
 
 </details>
 
