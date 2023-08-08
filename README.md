@@ -6,10 +6,16 @@ Sendo os primeiros com aplicação mais simples em relação a arquitetura, orga
 
 <details>
   <summary>SecretWord</summary>
-- Projeto de um jogo similar ao jogo da forca.
-- Nesse projeto as "responsabilidades" estão concentradas no App.
-- É o primeiro projeto do curso, então foi criado de forma mais básica, sem usar todos os recursos do react.
   
+- Projeto de um jogo similar ao jogo da forca.
+  
+- Nesse projeto as "responsabilidades" estão concentradas no App.
+ 
+- É o primeiro projeto do curso, então foi criado de forma mais básica, sem usar todos os recursos do react.
+ 
+  ![SecretWord](https://github.com/JuCouto/React-Iniciante/assets/100319483/17997dd8-ed8d-49e2-bbc0-a599f28c5c16)
+
+** sugestão de melhoria: mostrar a palavra completa ao acertar todas asletras, no momento está trocando para a próxima palavra. 
 </details>
 
 <details>
@@ -23,7 +29,7 @@ Sendo os primeiros com aplicação mais simples em relação a arquitetura, orga
 o react vai abrir em outra porta se a 3000 estiver ocupada, ou usando o vite vai abrir  na 5173
   - <b>npm run server</b>
 
-  - O código está comentado para facilitar o acompanhamento no que foi acrescentado nas aulas.
+  - O código possui comentários para facilitar o acompanhamento no que foi acrescentado nas aulas.
 
 </details>
 
