@@ -1,0 +1,15 @@
+.animes-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    list-style: none;
+    grid-gap: 1.5rem;
+    /*  
+    grid-tamplate quantas vezes quero que repita, auto-fit :quantas couberem na tela , minmax: largura das colunas e 1fr o espaço vazio
+    list-style vai retirar as bolinhas,
+    grid-map vai estabelecer o tamanho da fonte de acordo com o padrão do navegador(geralmente 16px) */
+}
+
+.animes-list img{
+    max-width: 100%; 
+    /*  aqui é 100% de cada li. */
+}
