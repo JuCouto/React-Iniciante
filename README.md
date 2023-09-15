@@ -43,7 +43,7 @@ o react vai abrir em outra porta se a 3000 estiver ocupada, ou usando o vite vai
 <details>
   <summary>Hooks React</summary>
 
-  ### UseState
+### UseState
 - O principal propósito é gerenciar valores.
 - Podemos consultar uma valor e alterá-lo.
 - Isso permite re-renderizar um componente, o que não é possível com a manipulação de variáveis.
@@ -77,4 +77,9 @@ quando passamos uma dependência criada no useState no array do useEffect para s
 - Em alguns casos é necessário ter um cleanup no useEffect para garantir o funcionamento
 ex: um timeout que ao mudar de página pode continuar a ser executado
 
+### useDebounce
+- Hook personalizado para controlar o tempo para execução da chamada na API, ele permite a execução da função após executar o tempo de espera determinado.
+- modelo de componente Search sendo chamado no about, consumindo essa api https://kitsu.docs.apiary.io/#introduction/json:api.
+- O componente SEARCHINPUT tem a implementação do debaunce.
+- 
 </details>
