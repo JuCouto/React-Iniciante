@@ -1,6 +1,6 @@
 # React-Iniciante
 
-#### Anotações realizadas seguindo as explicações dos vídeos do curso React do zero a maestria ministrada por Matheus Battisti.
+#### Anotações realizadas seguindo as explicações dos vídeos do curso React do zero a maestria,  ministrada por Matheus Battisti.
 
 #### A descrição dos projetos segue a ordem de execução em aula.
 Sendo os primeiros com aplicação mais simples em relação a arquitetura, organização do código, uso de componentes e hooks.
@@ -112,15 +112,42 @@ ex: const [list] = useState(["Juliana", "Claudia", "Priscila"])
     - o segundo campo é o valor da propriedade, ele precisa ser informad0 corretamente.
 
   -  - ao receber o props no filho , recebo no componente filho pelo nome que eu dei a ele.
-       
+
+* Desestruturar props - destructuring
+  - É a forma mais atual e funcional para utilizar.
+  - passo entre {} os nomes das propriedades que estou recebendo por props.
+
+* Renderização de lista
+  - modelo de construção: { cars.map((car)=>(
+  - para acessar os dados preciso passar car.propriedadedesejada
+)}
+
+* Fragments
+  - <></> É interessante utilizar quando precisamos ter mais de um elemento pai em um componente.
+  - Ela serve como elemento pai, não alterando a estrutura HTML como acontece se utilizamos uma div.
+
 * ChildrenProp
   - recurso utilizado quando um componente precisa ter jsx dentro dele
   - porém esse jsx vem do componente pai
   - então o componente age como um container abraçando estes elementos
-  - children é considerada uma prop de um componente
+  - children é considerada uma prop de um componente.
+  - a propriedade children carrega outros elementos além do valor, como o HTML.
+  - No componente pai passo o prop myValue e as propriedades que desejo que sejam mostradas dentro do componente filho, elas serão carregadas pelo prop children, essa funcionalidade é muito utilizada em context.
+    
+  ![image](https://github.com/JuCouto/React-Iniciante/assets/100319483/486fec32-02cf-49f7-8eba-fa2979cc3bf7)
+  
+  - no componente filho recebo o prop children e passo como objeto children onde será carregado as propriedades no pai, posso também receber mais de uma prop, como o myValue por exemplo:
+    
+   ![image](https://github.com/JuCouto/React-Iniciante/assets/100319483/8c1dcd7d-de3f-4d12-99f2-c43af25427a7)
+
+  - Exemplo em tela:
+ 
+    ![image](https://github.com/JuCouto/React-Iniciante/assets/100319483/5cb20c97-243b-4d9e-b68a-7940dd5007c8)
 
 * Função em props
-  - criar a função no component pai e enviar como prop para o component
+  - criar a função no component pai e enviar como prop para o component.
+  - No componente filho a função pode ser ativada por um evento.
+  - exemplo: função de deletar no pai, passo para o filho , e no filho chamo a função através do ícone de deletar.
 
 * State lift
   - valor levado do component filho para o pai
@@ -130,7 +157,7 @@ ex: const [list] = useState(["Juliana", "Claudia", "Priscila"])
 </details>
 
 <details>
-  <summary>SecretWord</summary>
+  <summary>SecretWord - Projeto</summary>
   
 - Projeto de um jogo similar ao jogo da forca.
   
