@@ -144,15 +144,30 @@ ex: const [list] = useState(["Juliana", "Claudia", "Priscila"])
  
     ![image](https://github.com/JuCouto/React-Iniciante/assets/100319483/5cb20c97-243b-4d9e-b68a-7940dd5007c8)
 
-* Função em props
+* Função em props -  PAI PARA FILHO
   - criar a função no component pai e enviar como prop para o component.
   - No componente filho a função pode ser ativada por um evento.
   - exemplo: função de deletar no pai, passo para o filho , e no filho chamo a função através do ícone de deletar.
 
-* State lift
+* State lift - FILHO PARA PAI
   - valor levado do component filho para o pai
   - geralmente temos um componente que usa o state e outro que o altera
   - precisamos passar a alteração para o componente pai e este passa para o componente que usa o state
+
+	* --> exemplo com 3 componentes:
+
+	-- (estado gerenciado pelo componente pai)
+	-- o state fica no pai
+	-- a função está no pai
+	-- passo o state para o filho1 por prop.
+
+	-- (componente que consome esse estado)
+	-- no filho1 recebo o parâmetro
+
+	-- (componente que altera e eleva o estado, para eu ter um reconsumo do estado)
+	-- no pai passo a função por props par o filho2.
+	-- no filho2 recebo a função e faço o gerenciamento do que será passado/recebido na função que está criada no pai.
+	-- criando um botão que vai ativar o evento para chamar a função e passar o valor para a função.
 
 </details>
 
