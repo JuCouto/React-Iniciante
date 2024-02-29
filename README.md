@@ -172,6 +172,24 @@ ex: const [list] = useState(["Juliana", "Claudia", "Priscila"])
 </details>
 
 <details>
+  <summary>CSS</summary>
+
+* CSS inline
+	- style{{color:"red", margin: "25px", borderTop:"2px black solid" }}
+
+* CSS de Componentes
+	- Classe style.css
+ - 
+* Classe dinâmica 
+usar if ternário para transitar entre duas className, pode ser usando para acessibilidade
+
+CSS modules
+é usando atualmente, obeneficio é não vazar css para outro componente, mesmo se eu chamar a mesma classename, ele só aceita se tiver a importação da pasta module.css
+a convenção é nomecomponente.module.css
+
+ </details>
+ 
+<details>
   <summary>SecretWord - Projeto</summary>
   
 - Projeto de um jogo similar ao jogo da forca.
