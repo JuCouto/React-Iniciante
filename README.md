@@ -172,6 +172,12 @@ ex: const [list] = useState(["Juliana", "Claudia", "Priscila"])
 </details>
 
 <details>
+  <summary>Formulário</summary>
+
+ </details>
+
+ 
+<details>
   <summary>CSS</summary>
 
 * CSS inline
